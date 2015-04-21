@@ -68,5 +68,11 @@ public class Connector
 		catch (SQLException e) { throw new DALException(e); }
 	}
 	
+	public static boolean doExecution(String cmd) throws DALException
+	{
+		try { return stm.execute(cmd); }
+		catch (SQLException e) { throw new DALException(e); }
+	}
+	
 	
 }

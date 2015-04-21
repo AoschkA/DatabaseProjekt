@@ -18,7 +18,13 @@ public class Main {
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		System.out.println("Operatoer nummer 3:");
-		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
+		MySQLOperatoerDAO opr = null;
+		try {
+			opr = new MySQLOperatoerDAO();
+		} catch (DALException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		try { System.out.println(opr.getOperatoer(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
@@ -45,7 +51,13 @@ public class Main {
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		System.out.println("Alle raavarer:");
-		MySQLRaavareDAO rdo = new MySQLRaavareDAO();
+		MySQLRaavareDAO rdo = null;
+		try {
+			rdo = new MySQLRaavareDAO();
+		} catch (DALException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try { System.out.println(rdo.getRaavareList()); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		

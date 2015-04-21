@@ -12,6 +12,12 @@ import dto01917.RaavareBatchDTO;
 import dto01917.RaavareDTO;
 
 public class MySQLRaavareDAO implements RaavareDAO{
+	
+	public MySQLRaavareDAO() throws DALException{
+		Connector.doUpdate("DROP VIEW IF EXISTS vare;");
+		String vie = "CREATE VIEW vare AS SELECT raavare_id, raavare_navn, leverandoer FROM raavare;";
+		Connector.doUpdate(vie);
+	}
 
 	@Override
 	public RaavareDTO getRaavare(int raavareId) throws DALException {

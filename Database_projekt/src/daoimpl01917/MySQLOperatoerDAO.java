@@ -6,13 +6,22 @@ import java.util.List;
 import java.util.ArrayList;
 
 import connector01917.Connector;
-
 import daointerfaces01917.DALException;
 import daointerfaces01917.OperatoerDAO;
 import dto01917.OperatoerDTO;
 
 public class MySQLOperatoerDAO implements OperatoerDAO {
 	
+	public MySQLOperatoerDAO() throws DALException{
+		Connector.doUpdate("DROP PROCEDURE IF EXISTS ny_Operatoer;");
+		String pro = "CREATE PROCEDURE ny_Operatoer(opr_id_ind INT(11), opr_navn_ind VARCHAR(30), "
+				+ "ini_ind VARCHAR(4), cpr_ind VARCHAR(11), password_ind VARCHAR(20)) "
+				+ "BEGIN "
+				+ "INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) "
+				+ "VALUES(opr_id_ind, opr_navn_ind, ini_ind, cpr_ind, password_ind); "
+				+ "END";
+		Connector.doUpdate(pro);
+	}
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
 		ResultSet rs = Connector.doQuery("SELECT * FROM operatoer WHERE opr_id = " + oprId);
 	    try {
