@@ -28,6 +28,12 @@ public class Main {
 		try { System.out.println(opr.getOperatoer(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
+		try {
+			Connector.doUpdate("DELETE FROM operatoer WHERE opr_id = 4");
+		} catch (DALException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		System.out.println("Indsaettelse af ny operatoer med opr_id =  4");
 		OperatoerDTO oprDTO = new OperatoerDTO(4,"Don Juan","DJ","000000-0000","iloveyou");
 		try { opr.createOperatoer(oprDTO); }
