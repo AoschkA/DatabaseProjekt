@@ -149,11 +149,11 @@ public class JUnit_Testcase {
 		RaavareDTO raavare2 = new RaavareDTO(52, "Cult Shaker", "Dyybvad");
 		RaavareDTO raavare3 = new RaavareDTO(53, "Kage", "Sønderjylland A/S");
 		
-		try { raa.updateRaavare(raavare1);;}
+		try { raa.updateRaavare(raavare1);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { raa.updateRaavare(raavare2);;}
+		try { raa.updateRaavare(raavare2);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { raa.updateRaavare(raavare3);;}
+		try { raa.updateRaavare(raavare3);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		try {
@@ -199,8 +199,6 @@ public class JUnit_Testcase {
 		ProduktBatchDTO batch3 = new ProduktBatchDTO(23, recept1.getReceptId(), 0);
 		
 		// Inserts the batches into the database
-		
-		
 		try { batch.updateProduktBatch(batch1);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		try { batch.updateProduktBatch(batch2);}
