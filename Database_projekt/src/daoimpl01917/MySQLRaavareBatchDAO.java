@@ -8,6 +8,7 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareBatchDAO;
+import dto01917.OperatoerDTO;
 import dto01917.RaavareBatchDTO;
 
 public class MySQLRaavareBatchDAO implements RaavareBatchDAO{
@@ -21,7 +22,10 @@ public class MySQLRaavareBatchDAO implements RaavareBatchDAO{
 	    }
 	    catch (SQLException e) {throw new DALException(e); }
 	}
-
+	public void deleteRaavareBatch(RaavareBatchDTO raavarebatch) throws DALException {
+		Connector.doUpdate("DELETE FROM raavarebatch WHERE raavare_id = " + raavarebatch.getRaavareId());
+	}
+	
 	@Override
 	public List<RaavareBatchDTO> getRaavareBatchList() throws DALException {
 		List<RaavareBatchDTO> list = new ArrayList<RaavareBatchDTO>();

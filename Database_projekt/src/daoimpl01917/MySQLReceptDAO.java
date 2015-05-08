@@ -8,6 +8,7 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptDAO;
+import dto01917.RaavareDTO;
 import dto01917.ReceptDTO;
 
 public class MySQLReceptDAO implements ReceptDAO{
@@ -21,7 +22,11 @@ public class MySQLReceptDAO implements ReceptDAO{
 	    }
 	    catch (SQLException e) {throw new DALException(e); }
 	}
-
+	
+	public void deleteRecept(ReceptDTO recept) throws DALException {
+		Connector.doUpdate("DELETE FROM recept WHERE recept_id = " + recept.getReceptId());
+	}
+	
 	@Override
 	public List<ReceptDTO> getReceptList() throws DALException {
 		List<ReceptDTO> list = new ArrayList<ReceptDTO>();

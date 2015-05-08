@@ -8,6 +8,7 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
+import dto01917.OperatoerDTO;
 import dto01917.ProduktBatchKompDTO;
 
 public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
@@ -22,7 +23,11 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 	    }
 	    catch (SQLException e) {throw new DALException(e); }
 	}
-
+	
+	public void deleteProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
+		Connector.doUpdate("DELETE FROM produktbatchkomponent WHERE pb_id = " + produktbatchkomponent.getPbId() + " AND rb_id = " + produktbatchkomponent.getRbId());
+	}
+	
 	@Override
 	public List<ProduktBatchKompDTO> getProduktBatchKompList(int pbId)
 			throws DALException {

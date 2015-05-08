@@ -8,6 +8,7 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
+import dto01917.ReceptDTO;
 import dto01917.ReceptKompDTO;
 
 public class MySQLReceptKompDAO implements ReceptKompDAO {
@@ -28,7 +29,11 @@ public class MySQLReceptKompDAO implements ReceptKompDAO {
 		catch (SQLException e) { throw new DALException(e); }
 		return resReceptKomp;
 	}
-
+	
+	public void deleteReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
+		Connector.doUpdate("DELETE FROM receptkomponent WHERE recept_id = " + receptkomponent.getReceptId());
+	}
+	
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptkompId)
 			throws DALException {
