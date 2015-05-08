@@ -42,7 +42,7 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 	
 	public void updateOperatoer(OperatoerDTO opr) throws DALException {
 		Connector.doUpdate(
-				"UPDATE operatoer SET  opr_navn = '" + opr.getOprNavn() + "', ini =  '" + opr.getIni() + 
+				"UPDATE operatoer SET  opr_id = '" + opr.getOprId() + "', opr_navn = '" + opr.getOprNavn() + "', ini =  '" + opr.getIni() + 
 				"', cpr = '" + opr.getCpr() + "', password = '" + opr.getPassword() + "' WHERE opr_id = " +
 				opr.getOprId()
 		);
