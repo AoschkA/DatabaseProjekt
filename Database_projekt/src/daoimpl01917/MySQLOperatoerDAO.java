@@ -48,6 +48,10 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 		);
 	}
 	
+	public void deleteOperatoer(OperatoerDTO opr) throws DALException {
+		Connector.doUpdate("DELETE FROM operatoer WHERE opr_id = " + opr.getOprId());
+	}
+	
 	public List<OperatoerDTO> getOperatoerList() throws DALException {
 		List<OperatoerDTO> list = new ArrayList<OperatoerDTO>();
 		ResultSet rs = Connector.doQuery("SELECT * FROM operatoer");
