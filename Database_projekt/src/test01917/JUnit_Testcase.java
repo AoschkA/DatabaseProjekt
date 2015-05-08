@@ -10,10 +10,12 @@ import org.junit.Test;
 import connector01917.Connector;
 import daoimpl01917.MySQLOperatoerDAO;
 import daoimpl01917.MySQLProduktBatchDAO;
+import daoimpl01917.MySQLRaavareDAO;
 import daoimpl01917.MySQLReceptDAO;
 import daointerfaces01917.DALException;
 import dto01917.OperatoerDTO;
 import dto01917.ProduktBatchDTO;
+import dto01917.RaavareDTO;
 import dto01917.ReceptDTO;
 
 public class JUnit_Testcase {
@@ -125,6 +127,51 @@ public class JUnit_Testcase {
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testRaavare() {
+		try { new Connector(); } 
+		catch (InstantiationException e) { e.printStackTrace(); }
+		catch (IllegalAccessException e) { e.printStackTrace(); }
+		catch (ClassNotFoundException e) { e.printStackTrace(); }
+		catch (SQLException e) { e.printStackTrace(); }
+
+		MySQLRaavareDAO raa = null;
+		try {
+			raa = new MySQLRaavareDAO();
+		} catch (DALException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		RaavareDTO raavare1 = new RaavareDTO(51, "Chokolade", "Toms");
+		RaavareDTO raavare2 = new RaavareDTO(52, "Cult Shaker", "Dyybvad");
+		RaavareDTO raavare3 = new RaavareDTO(53, "Kage", "Sønderjylland A/S");
+		
+		try { raa.updateRaavare(raavare1);;}
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		try { raa.updateRaavare(raavare2);;}
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		try { raa.updateRaavare(raavare3);;}
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		try {
+			assertEquals(raa.getRaavare(51).getRaavareId(),raavare1.getRaavareId());
+			assertEquals(raa.getRaavare(52).getRaavareId(),raavare2.getRaavareId());
+			assertEquals(raa.getRaavare(53).getRaavareId(),raavare3.getRaavareId());
+			
+			assertEquals(raa.getRaavare(51).getRaavareNavn(),raavare1.getRaavareNavn());
+			assertEquals(raa.getRaavare(52).getRaavareNavn(),raavare2.getRaavareNavn());
+			assertEquals(raa.getRaavare(53).getRaavareNavn(),raavare3.getRaavareNavn());
+			
+			assertEquals(raa.getRaavare(51).getLeverandoer(),raavare1.getLeverandoer());
+			assertEquals(raa.getRaavare(52).getLeverandoer(),raavare2.getLeverandoer());
+			assertEquals(raa.getRaavare(53).getLeverandoer(),raavare3.getLeverandoer());
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Test
