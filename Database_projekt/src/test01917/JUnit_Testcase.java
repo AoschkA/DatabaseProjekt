@@ -27,65 +27,69 @@ public class JUnit_Testcase {
 		catch (IllegalAccessException e) { e.printStackTrace(); }
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
-
 		MySQLOperatoerDAO opr = null;
-		try {
-			opr = new MySQLOperatoerDAO();
-		} catch (DALException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-
+		try { opr = new MySQLOperatoerDAO();} 
+		catch (DALException e2) { e2.printStackTrace();}
 		// Creates the operators 
-		OperatoerDTO oprDTO1 = new OperatoerDTO(51,"Don Juan","DJ","000000-0220","iloveyou");
-		OperatoerDTO oprDTO2 = new OperatoerDTO(52,"Doctor Boon","DB","000000-2000","ilistentopop");
-		OperatoerDTO oprDTO3 = new OperatoerDTO(53,"Master Yoda","MY","020090-2000","forcebewithyou");
-		OperatoerDTO oprDTO4 = new OperatoerDTO(54,"Louis Van Gaal","LVG","000220-0000","nikepaysmyfun");
-		OperatoerDTO oprDTO5 = new OperatoerDTO(55,"Oberst Heinfelt","OH","000000-2090","forhonor");
-
+		OperatoerDTO oprDTO1 = new OperatoerDTO(1001,"Don Juan","DJ","000000-0220","iloveyou");
+		OperatoerDTO oprDTO2 = new OperatoerDTO(1002,"Doctor Boon","DB","000000-2000","ilistentopop");
+		OperatoerDTO oprDTO3 = new OperatoerDTO(1003,"Master Yoda","MY","020090-2000","forcebewithyou");
+		OperatoerDTO oprDTO4 = new OperatoerDTO(1004,"Louis Van Gaal","LVG","000220-0000","nikepaysmyfun");
+		OperatoerDTO oprDTO5 = new OperatoerDTO(1005,"Oberst Heinfelt","OH","000000-2090","forhonor");
+		// Pretest deletion of Operatoers
+		try { opr.deleteOperatoer(oprDTO1);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO2);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO3);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO4);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO5);} 
+		catch (DALException e) { e.printStackTrace();}
 
 		// Inserts the operators into the database
-		try { opr.updateOperatoer(oprDTO1);}
+		try { opr.createOperatoer(oprDTO1);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { opr.updateOperatoer(oprDTO2);}
+		try { opr.createOperatoer(oprDTO2);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { opr.updateOperatoer(oprDTO3);}
+		try { opr.createOperatoer(oprDTO3);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { opr.updateOperatoer(oprDTO4);}
+		try { opr.createOperatoer(oprDTO4);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { opr.updateOperatoer(oprDTO5);}
+		try { opr.createOperatoer(oprDTO5);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
 
 
 		// Test for insertion into database
 		try {
 			// Test for opr ID
-			assertEquals(opr.getOperatoer(51).getOprId(),oprDTO1.getOprId());
-			assertEquals(opr.getOperatoer(52).getOprId(),oprDTO2.getOprId());
-			assertEquals(opr.getOperatoer(53).getOprId(),oprDTO3.getOprId());
-			assertEquals(opr.getOperatoer(54).getOprId(),oprDTO4.getOprId());
-			assertEquals(opr.getOperatoer(55).getOprId(),oprDTO5.getOprId());
+			assertEquals(opr.getOperatoer(1001).getOprId(),oprDTO1.getOprId());
+			assertEquals(opr.getOperatoer(1002).getOprId(),oprDTO2.getOprId());
+			assertEquals(opr.getOperatoer(1003).getOprId(),oprDTO3.getOprId());
+			assertEquals(opr.getOperatoer(1004).getOprId(),oprDTO4.getOprId());
+			assertEquals(opr.getOperatoer(1005).getOprId(),oprDTO5.getOprId());
 
 			// Test for name
-			assertEquals(opr.getOperatoer(51).getOprNavn(),oprDTO1.getOprNavn());
-			assertEquals(opr.getOperatoer(52).getOprNavn(),oprDTO2.getOprNavn());
-			assertEquals(opr.getOperatoer(53).getOprNavn(),oprDTO3.getOprNavn());
-			assertEquals(opr.getOperatoer(54).getOprNavn(),oprDTO4.getOprNavn());
-			assertEquals(opr.getOperatoer(55).getOprNavn(),oprDTO5.getOprNavn());
+			assertEquals(opr.getOperatoer(1001).getOprNavn(),oprDTO1.getOprNavn());
+			assertEquals(opr.getOperatoer(1002).getOprNavn(),oprDTO2.getOprNavn());
+			assertEquals(opr.getOperatoer(1003).getOprNavn(),oprDTO3.getOprNavn());
+			assertEquals(opr.getOperatoer(1004).getOprNavn(),oprDTO4.getOprNavn());
+			assertEquals(opr.getOperatoer(1005).getOprNavn(),oprDTO5.getOprNavn());
 
 			// Test for CPR
-			assertEquals(opr.getOperatoer(51).getCpr(),oprDTO1.getCpr());
-			assertEquals(opr.getOperatoer(52).getCpr(),oprDTO2.getCpr());
-			assertEquals(opr.getOperatoer(53).getCpr(),oprDTO3.getCpr());
-			assertEquals(opr.getOperatoer(54).getCpr(),oprDTO4.getCpr());
-			assertEquals(opr.getOperatoer(55).getCpr(),oprDTO5.getCpr());
+			assertEquals(opr.getOperatoer(1001).getCpr(),oprDTO1.getCpr());
+			assertEquals(opr.getOperatoer(1002).getCpr(),oprDTO2.getCpr());
+			assertEquals(opr.getOperatoer(1003).getCpr(),oprDTO3.getCpr());
+			assertEquals(opr.getOperatoer(1004).getCpr(),oprDTO4.getCpr());
+			assertEquals(opr.getOperatoer(1005).getCpr(),oprDTO5.getCpr());
 
 			// Test for password
-			assertEquals(opr.getOperatoer(51).getPassword(),oprDTO1.getPassword());
-			assertEquals(opr.getOperatoer(52).getPassword(),oprDTO2.getPassword());
-			assertEquals(opr.getOperatoer(53).getPassword(),oprDTO3.getPassword());
-			assertEquals(opr.getOperatoer(54).getPassword(),oprDTO4.getPassword());
-			assertEquals(opr.getOperatoer(55).getPassword(),oprDTO5.getPassword());
+			assertEquals(opr.getOperatoer(1001).getPassword(),oprDTO1.getPassword());
+			assertEquals(opr.getOperatoer(1002).getPassword(),oprDTO2.getPassword());
+			assertEquals(opr.getOperatoer(1003).getPassword(),oprDTO3.getPassword());
+			assertEquals(opr.getOperatoer(1004).getPassword(),oprDTO4.getPassword());
+			assertEquals(opr.getOperatoer(1005).getPassword(),oprDTO5.getPassword());
 
 
 		} catch (DALException e) {
@@ -93,9 +97,9 @@ public class JUnit_Testcase {
 		}
 
 		// Test for updating an Operatoer
-		OperatoerDTO oprDTO1updated = new OperatoerDTO(51,"Don Bon","DJ","088800-0220","ihateyou");
-		OperatoerDTO oprDTO2updated = new OperatoerDTO(52,"Doctor Pinata","DB","012300-2000","ilistentorock");
-		OperatoerDTO oprDTO3updated = new OperatoerDTO(53,"Master Windu","MY","020999-2000","forcebewithyoumore");
+		OperatoerDTO oprDTO1updated = new OperatoerDTO(1001,"Don Bon","DJ","088800-0220","ihateyou");
+		OperatoerDTO oprDTO2updated = new OperatoerDTO(1002,"Doctor Pinata","DB","012300-2000","ilistentorock");
+		OperatoerDTO oprDTO3updated = new OperatoerDTO(1003,"Master Windu","MY","020999-2000","forcebewithyoumore");
 
 		try { opr.updateOperatoer(oprDTO1updated);}
 		catch (DALException e) { System.out.println(e.getMessage()); }
@@ -105,162 +109,56 @@ public class JUnit_Testcase {
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		try {
 			// Test for opr ID
-			assertEquals(opr.getOperatoer(51).getOprId(),oprDTO1updated.getOprId());
-			assertEquals(opr.getOperatoer(52).getOprId(),oprDTO2updated.getOprId());
-			assertEquals(opr.getOperatoer(53).getOprId(),oprDTO3updated.getOprId());
+			assertEquals(opr.getOperatoer(1001).getOprId(),oprDTO1updated.getOprId());
+			assertEquals(opr.getOperatoer(1002).getOprId(),oprDTO2updated.getOprId());
+			assertEquals(opr.getOperatoer(1003).getOprId(),oprDTO3updated.getOprId());
 
 			// Test for name
-			assertEquals(opr.getOperatoer(51).getOprNavn(),oprDTO1updated.getOprNavn());
-			assertEquals(opr.getOperatoer(52).getOprNavn(),oprDTO2updated.getOprNavn());
-			assertEquals(opr.getOperatoer(53).getOprNavn(),oprDTO3updated.getOprNavn());
+			assertEquals(opr.getOperatoer(1001).getOprNavn(),oprDTO1updated.getOprNavn());
+			assertEquals(opr.getOperatoer(1002).getOprNavn(),oprDTO2updated.getOprNavn());
+			assertEquals(opr.getOperatoer(1003).getOprNavn(),oprDTO3updated.getOprNavn());
 
 			// Test for CPR
-			assertEquals(opr.getOperatoer(51).getCpr(),oprDTO1updated.getCpr());
-			assertEquals(opr.getOperatoer(52).getCpr(),oprDTO2updated.getCpr());
-			assertEquals(opr.getOperatoer(53).getCpr(),oprDTO3updated.getCpr());
+			assertEquals(opr.getOperatoer(1001).getCpr(),oprDTO1updated.getCpr());
+			assertEquals(opr.getOperatoer(1002).getCpr(),oprDTO2updated.getCpr());
+			assertEquals(opr.getOperatoer(1003).getCpr(),oprDTO3updated.getCpr());
 
 			// Test for password
-			assertEquals(opr.getOperatoer(51).getPassword(),oprDTO1updated.getPassword());
-			assertEquals(opr.getOperatoer(52).getPassword(),oprDTO2updated.getPassword());
-			assertEquals(opr.getOperatoer(53).getPassword(),oprDTO3updated.getPassword());
+			assertEquals(opr.getOperatoer(1001).getPassword(),oprDTO1updated.getPassword());
+			assertEquals(opr.getOperatoer(1002).getPassword(),oprDTO2updated.getPassword());
+			assertEquals(opr.getOperatoer(1003).getPassword(),oprDTO3updated.getPassword());
 
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Test
-	public void testRaavare() {
-		try { new Connector(); } 
-		catch (InstantiationException e) { e.printStackTrace(); }
-		catch (IllegalAccessException e) { e.printStackTrace(); }
-		catch (ClassNotFoundException e) { e.printStackTrace(); }
-		catch (SQLException e) { e.printStackTrace(); }
-
-		MySQLRaavareDAO raa = null;
-		try {
-			raa = new MySQLRaavareDAO();
-		} catch (DALException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
 		
-		RaavareDTO raavare1 = new RaavareDTO(51, "Chokolade", "Toms");
-		RaavareDTO raavare2 = new RaavareDTO(52, "Cult Shaker", "Dyybvad");
-		RaavareDTO raavare3 = new RaavareDTO(53, "Kage", "Sønderjylland A/S");
-		
-		try { raa.updateRaavare(raavare1);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { raa.updateRaavare(raavare2);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { raa.updateRaavare(raavare3);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		try {
-			assertEquals(raa.getRaavare(51).getRaavareId(),raavare1.getRaavareId());
-			assertEquals(raa.getRaavare(52).getRaavareId(),raavare2.getRaavareId());
-			assertEquals(raa.getRaavare(53).getRaavareId(),raavare3.getRaavareId());
-			
-			assertEquals(raa.getRaavare(51).getRaavareNavn(),raavare1.getRaavareNavn());
-			assertEquals(raa.getRaavare(52).getRaavareNavn(),raavare2.getRaavareNavn());
-			assertEquals(raa.getRaavare(53).getRaavareNavn(),raavare3.getRaavareNavn());
-			
-			assertEquals(raa.getRaavare(51).getLeverandoer(),raavare1.getLeverandoer());
-			assertEquals(raa.getRaavare(52).getLeverandoer(),raavare2.getLeverandoer());
-			assertEquals(raa.getRaavare(53).getLeverandoer(),raavare3.getLeverandoer());
-		} catch (DALException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	@Test
-	public void testProduktBatch() {
-		try { new Connector(); } 
-		catch (InstantiationException e) { e.printStackTrace(); }
-		catch (IllegalAccessException e) { e.printStackTrace(); }
-		catch (ClassNotFoundException e) { e.printStackTrace(); }
-		catch (SQLException e) { e.printStackTrace(); }
-		
-		MySQLProduktBatchDAO batch = new MySQLProduktBatchDAO();
-		
-		// Creates a recept
-		ReceptDTO recept1 = new ReceptDTO(70, "Skin");
-		
-		MySQLReceptDAO recepter = new MySQLReceptDAO();
-		
-		try { recepter.updateRecept(recept1);;}
-		catch (DALException e) { System.out.println(e.getMessage()); }
+		// Deletes the Operatoers
+		try { opr.deleteOperatoer(oprDTO1);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO2);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO3);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO4);} 
+		catch (DALException e) { e.printStackTrace();}
+		try { opr.deleteOperatoer(oprDTO5);} 
+		catch (DALException e) { e.printStackTrace();}
 		
 		
-		// Creates the ProduktBatches
-		ProduktBatchDTO batch1 = new ProduktBatchDTO(21, recept1.getReceptId(), 1);
-		ProduktBatchDTO batch2 = new ProduktBatchDTO(22, recept1.getReceptId(), 0);
-		ProduktBatchDTO batch3 = new ProduktBatchDTO(23, recept1.getReceptId(), 0);
+		// Test for deletion
+		int test = 0;
+		try { assertEquals(opr.getOperatoer(1001), oprDTO1);}  
+		catch (DALException e) { test++;}
+		try { assertEquals(opr.getOperatoer(1002), oprDTO2);}  
+		catch (DALException e) { test++;}
+		try { assertEquals(opr.getOperatoer(1003), oprDTO3);}  
+		catch (DALException e) { test++;}
+		try { assertEquals(opr.getOperatoer(1004), oprDTO4);}  
+		catch (DALException e) { test++;}
+		try { assertEquals(opr.getOperatoer(1005), oprDTO5);}  
+		catch (DALException e) { test++;}
 		
-		// Inserts the batches into the database
-		try { batch.updateProduktBatch(batch1);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { batch.updateProduktBatch(batch2);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { batch.updateProduktBatch(batch3);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		// Test for insertion into database
-		try {
-			// Test for PbID
-			assertEquals(batch.getProduktBatch(21).getPbId(), batch1.getPbId());
-			assertEquals(batch.getProduktBatch(22).getPbId(), batch2.getPbId());
-			assertEquals(batch.getProduktBatch(23).getPbId(), batch3.getPbId());
-			
-			// Test for ReceptID
-			assertEquals(batch.getProduktBatch(21).getReceptId(), batch1.getReceptId());
-			assertEquals(batch.getProduktBatch(22).getReceptId(), batch2.getReceptId());
-			assertEquals(batch.getProduktBatch(23).getReceptId(), batch3.getReceptId());
-			
-			// Test for Status
-			assertEquals(batch.getProduktBatch(21).getStatus(), batch1.getStatus());
-			assertEquals(batch.getProduktBatch(22).getStatus(), batch2.getStatus());
-			assertEquals(batch.getProduktBatch(23).getStatus(), batch3.getStatus());
-			
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ProduktBatchDTO batch1updated = new ProduktBatchDTO(21, recept1.getReceptId(), 56);
-		ProduktBatchDTO batch2updated = new ProduktBatchDTO(22, recept1.getReceptId(), 2022);
-		ProduktBatchDTO batch3updated = new ProduktBatchDTO(23, recept1.getReceptId(), 5020);
-		
-		try { batch.updateProduktBatch(batch1updated);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { batch.updateProduktBatch(batch2updated);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		try { batch.updateProduktBatch(batch3updated);}
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		try {
-			// Test for PbID
-			assertEquals(batch.getProduktBatch(21).getPbId(), batch1updated.getPbId());
-			assertEquals(batch.getProduktBatch(22).getPbId(), batch2updated.getPbId());
-			assertEquals(batch.getProduktBatch(23).getPbId(), batch3updated.getPbId());
-			
-			// Test for ReceptID
-			assertEquals(batch.getProduktBatch(21).getReceptId(), batch1updated.getReceptId());
-			assertEquals(batch.getProduktBatch(22).getReceptId(), batch2updated.getReceptId());
-			assertEquals(batch.getProduktBatch(23).getReceptId(), batch3updated.getReceptId());
-			
-			// Test for Status
-			assertEquals(batch.getProduktBatch(21).getStatus(), batch1updated.getStatus());
-			assertEquals(batch.getProduktBatch(22).getStatus(), batch2updated.getStatus());
-			assertEquals(batch.getProduktBatch(23).getStatus(), batch3updated.getStatus());
-			
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
+		assertEquals(test, 5);
 		
 	}
 
